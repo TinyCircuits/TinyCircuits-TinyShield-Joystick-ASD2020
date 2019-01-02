@@ -1,11 +1,11 @@
 # TinyCircuits TinyShield Joystick Board
-# ASD2020 Rev3
+# ASD2020 Rev4
 
-These are the design files for the TinyCircuits ASD2020 Rev 3 PCB.  This is a TinyShield board that has two analog joysticks and two push buttons.
+The design files are located under design_files/ for the TinyCircuits ASD2020 Rev 4 PCB.  This is a TinyShield board that has two analog joysticks and two push buttons.
 
 Format is in Cadsoft Eagle format - Eagle version 6.2 was used for the original design.
 
-For more infomation on this, check out the product page at Tiny-Circuits.com:  https://tiny-circuits.com/tinyshield-joystick.html
+For more infomation on this, check out the product page at TinyCircuits.com:  https://tinycircuits.com/collections/sensors/products/joystick-tinyshield
 
 
 
