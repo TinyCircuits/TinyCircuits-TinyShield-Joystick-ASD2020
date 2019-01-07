@@ -1,3 +1,17 @@
+/*
+  TinyCircuits Joystick TinyShield Example Sketch
+  
+  This demo visualizes input from the Joystick Tinyshield onto
+  a TinyScreen TinyShield for testing purposes.
+
+  Written 
+  By 
+  Modified 07 January 2019
+  By Hunter Hykes
+
+  https://TinyCircuits.com
+*/
+
 #include <TinyScreen.h>
 #include <SPI.h>
 #include <Wire.h>
