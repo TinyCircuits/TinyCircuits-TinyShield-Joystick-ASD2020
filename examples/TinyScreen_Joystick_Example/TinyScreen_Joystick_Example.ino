@@ -1,9 +1,25 @@
+/************************************************************************
+ * This tutorial shows how the TinyShield Joystick board's values can be
+ * read using a TinyScreen+ processor board. The TinyScreen+ also displays
+ * graphics that prove the joystick outputs are being read properly.
+ *
+ * Hardware by: TinyCircuits
+ * Written by: Tony Batey for TinyCircuits
+ *
+ * Initiated: Mon. 11/20/2015 
+ * Updated: Tue. 04/08/2019
+ ************************************************************************/
+
+// Libraries
 #include <TinyScreen.h>
 #include <SPI.h>
 #include <Wire.h>
 
-TinyScreen display = TinyScreen(0);
+// TinyScreen+ variables
+TinyScreen display = TinyScreen(TinyScreenPlus);
+int background = TS_8b_Black;
 
+// Color constants
 #define	BLACK           0x00
 #define	BLUE            0xE0
 #define	RED             0x03
@@ -11,6 +27,7 @@ TinyScreen display = TinyScreen(0);
 #define WHITE           0xFF
 #define	GREY            0x6D
 
+// Global variables to hold joystick data
 int RX=0;
 int RY=0;
 int LX=0;
@@ -18,10 +35,16 @@ int LY=0;
 byte leftButton=0;
 byte rightButton=0;
 
+#if defined(ARDUINO_ARCH_SAMD)
+ #define SerialMonitorInterface SerialUSB
+#else
+ #define SerialMonitorInterface Serial
+#endif
 
+// Begin Serial, 
 void setup(void) {
   Wire.begin();
-  Serial.begin(9600);
+  SerialMonitorInterface.begin(9600);
   display.begin();
 }
 
@@ -58,6 +81,9 @@ void loop() {
   delay(50);
   
 }
+
+
+/****************************** Various Drawing Functions ***********************************/
 
 void drawFilledCircle(int x0, int y0, int radius, uint8_t color)
 {
@@ -112,6 +138,8 @@ void drawLeftArrow(int x, int y, int height, byte color){
   }
 }
 
+
+// Reading joystick values, storing in global variables
 void getJoystick(){
   Wire.requestFrom(0x22,6);
   int data[4];
